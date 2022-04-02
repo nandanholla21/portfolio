@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html{
+                scroll-behavior: smooth;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body  style="background-color:black;background-repeat: no-repeat; background-size: cover;" id="body">
+        <div style="text-align: left;">
+            <marquee direction="right">
+                <p style="text-align: left;color: orange;">Welcome to IEEE SJCE</p>
+            </marquee>
+            <img style="background-color: black;" src="ie.png" height="100" max-width="100"></img>
+        </div>
+       <div style="text-align: center;">
+        <a href="http://www.ieeesjce.com/index.php" style="color: orange;">Home</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="boards" style="position:static; border: 2px solid rgb(128, 126, 0)">Boards</button>
+        <br id="break1" hidden>
+        <ul id="list1" hidden>
+            <li style="color: black;"><a href="http://ieeesjce.com/boards.php" style="color: orange;">Web Development</a></li>
+            <li style="color: black;"><a href="http://www.ieeesjce.com/boards.php#edittb" style="color: orange;">Editorial Board</a></li>
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="societies"style="postion:static border: 2px solid green;">Societies</button>
+        <br id="break2" hidden>
+        <ul id="list2" hidden>
+            <li style="color: black;"><a href="http://www.ieeesjce.com/societies.php" style="color: orange;">Student Branch</a></li>
+            <li style="color: black;"><a href="http://www.ieeesjce.com/societies.php#eds" style="color: orange;">Electron Devices Society</a></li>
+            <li style="color: black;"><a href="http://www.ieeesjce.com/societies.php#wie" style="color: orange;">Women in Engineering</a></li>
+            <li style="color: black;"><a href="http://www.ieeesjce.com/societies.php#ras" style="color: orange;">Robotics Society</a></li>
+
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="team"style="border: 2px solid green;">Team</button>
+        <br id="break3" hidden>
+        <ul id="list3" hidden>
+            <li style="color: black;position: absolute;right: 250px;"><a href="http://www.ieeesjce.com/team.php#ec" style="color: orange;">Excecutive Committee</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 160px;"><a href="http://www.ieeesjce.com/team.php#mc" style="color: orange;">Membership development committee</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 290px;"><a href="http://www.ieeesjce.com/team.php#sc" style="color: orange;">Societies</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 290px;"><a href="http://www.ieeesjce.com/team.php#bd" style="color: orange;">Boards</a></li>
+            <br>
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="gallery"style="border: 2px solid green;">Gallery</button>
+        <br id="break4" hidden>
+        <ul id="list4" hidden>
+            <li style="color: black;position: absolute;right: 230px;"><a href="http://www.ieeesjce.com/gallery.php" style="color: orange;">Images and videos</a></li>
+            <br>
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="contacts"style="border: 2px solid green;">Contacts</button>
+        <br id="break5" hidden>
+        <ul id="list5" hidden>
+            <li style="color: black;position: absolute;right: 250px;"><a href="https://www.instagram.com/accounts/login/" style="color: orange;">Instagram</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 250px;"><a href="https://www.facebook.com/ieeesjce/" style="color: orange;">Facebook</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 265px;"><a href="https://twitter.com/ieeesjce" style="color: orange;">Twitter</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 252px;"><a href="https://www.linkedin.com/company/ieee-sjce/?originalSubdomain=in" style="color: orange;">Linkedin</a></li>
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="fests" style="border: 2px solid green;">Fests</button>
+        <br id="break6" hidden>
+        <ul id="list6" hidden>
+            <li style="color: black;position: absolute;right: 190px;"><a href="http://www.ieeesjce.com/cyberia/home.php" style="color: orange;">Cyberia</a></li>
+            <br>
+            <li style="color: black;position: absolute;right: 190px;"><a href="http://ieeesjce.com/tuxedo/" style="color: orange;">Tuxedo</a></li>
+        </div>
+       <br>
+       <br>
+       <p style="text-align:center;font-weight:bold; color: cyan;font-family: 'Courier New', Courier, monospace;">Events</p>
+        <div class="events" style="text-align: center; border: 2px solid green;" >
+            <marquee style="background-color: black; float: left;" onmouseover="stop()" onmouseout="start()">
+
+                <p style="color: yellow;">HAC-SAC 1.0 VIRTUAL HACK-A-THON
+                    Student Activities Committee, IEEE Bangalore Section in collaboration 
+                    with IEEE SIGHT is organising a hackathon! It's free, and it's for everyone.
+                    Eligible Participants- IEEE Members
+                    Categories: Agriculture and Healthcare,
+                    Last date to register : 20th October 2020
+                    Cash Prizes: 10k, 7.5k and 5k for top three winners.</p>
+            </marquee>
+            <marquee style="background-color: black;float: left;" onmouseover="stop()" onmouseout="start()">
+                <p style="color: yellow;">
+                    IEEEXTREME MOCK CODING CONTEST
+                    IEEE Bangalore Section presents IEEEXtreme Mock 
+                    Coding Contest-2. Eligibility: Participants who 
+                    have registered for IEEE XTREME 14.0 When: 11th 
+                    October 2020 Duration: The contest will last for 
+                    6hours 02:00 PM - 08:00 PM IST. The first three 
+                    winners will be rewarded with a cash prize of INR 
+                    2000, 1500 and 1000 respectively.</p>
+            </marquee>     
+            <marquee style="background-color: black;" onmouseover="stop()" onmouseout="start()">
+                <p style="color: yellow;">
+                    WEBINARS BY WIE- BANGALORE SECTION 13 July 2020; 
+                    Time: 7-8 pm- Title of talk: Leadership: leading
+                    oneself in uncertain times. Speaker: Ms. Santoshi 
+                    Kittur, PwC | Managing Director Bangalore.15 July 
+                    2020; Time: 6-7 pm- Title of talk: AI Infusion 
+                    during COVID 19: The need and the solution. Speaker:
+                    Ms.Geetha Adinarayan, Chief architect - AI applications 
+                    IBM India. Register Soon.
+                </p>
+            </marquee>
+        </div>
+        <div class="container">
+        <div class="row">
+            <br>
+        <p style="border: 3px solid red;font-weight: bold; font-family: 'Courier New', Courier, monospace;
+        text-align: center;color:red;background-color: black;">WHAT WE STAND FOR</p>
+        <br>
+            <p style="text-align: center;color: #ff6644">IEEE is the world's largest<br> 
+            technical professional organization dedicated to advancing<br> 
+            technology for the benefit of humanity. IEEE SJCE and its<br> 
+            members inspire a global community through its highly cited<br> 
+            workshops, seminars, professional and educational activities.</p>
+        <br>
+        
+        <div class="col-md-4">
+            <h3 style="color: cyan;font-family: Georgia, 'Times New Roman', Times, serif;">WORKSHOPS</h3>
+            <p style="background-color: black;color: white;">
+                <br>
+                IEEE-SJCE conducts various workshops to give<br> 
+                hands-on experience. The major workshops conducted<br> 
+                are :VPM, Soldering and Etching, Robotics.<br>   
+                <br>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3 style="color: cyan;font-family: Georgia, 'Times New Roman', Times, serif;">COMPETITIONS</h3>
+            <p style="background-color: black;color: white;">
+                <br>
+                IEEE-SJCE conducts many competitions during its technical<br> 
+                fests-TUXEDO and CYBERIA. Some of the competitions are :<br>
+                Amaze, Fury road and coding owl.<br>   
+                <br>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3 style="color: cyan;font-family: Georgia, 'Times New Roman', Times, serif;">SEMINARS</h3>
+            <p style="background-color: black;color: white;">
+                <br>
+                IEEE-SJCE conducts many technical talks, seminars<br>
+                and panel discussions during its technical fests.<br> 
+                PAPYRUS encourages students to write technical papers.<br> 
+                <br>
+            </p>
+        </div>
+        </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+       
+        <div class="col-md-4">
+            <h3 style="color: cyan;font-family: Georgia, 'Times New Roman', Times, serif;">MAGAZINE</h3>
+            <p style="background-color: black;color: white;">
+                <br>
+                We publish three editions of the IEEE Interface magazine,<br> 
+                every year :The Orientation edition, The Tuxedo edition,<br> 
+                The Cyberia Edition.<br> 
+                <br>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3 style="color: cyan; font-family: Georgia, 'Times New Roman', Times, serif;">ACTIVITIES</h3>
+            <p style="background-color: black;color: white;">
+                <br>
+                There are a lot of technical and non technical activities<br> 
+                that are undertaken here at IEEE to encourage students to<br> 
+                learn in a way which inspires them to do so.<br>
+                <br>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3 style="color: cyan;font-family: Georgia, 'Times New Roman', Times, serif;">PERSONALITY DEVELOPMENT</h3>
+            <p style="background-color: black;color: white;">
+                <br>
+                Soft skills are one of the most important attributes in todays world.<br> 
+                We at IEEE aspire to inculcate values that define us as people who are<br>
+                ethically adept and vision driven.<br>
+                <br>
+            </p>  
+        </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button id="totop" style="right: 100%;"><a href="#body">Go to top</a></button>
+        </div>
+        <div>
+            <p style="color:crimson; position: fixed;top: 120px;right: 28px; font-family: 'Courier New', Courier, monospace;">CHAT:</p>
+            <form>
+                <textarea placeholder="Enter a message.." id="textarea1" style="position: fixed;top: 48px;right: 28px;"></textarea>
+            </form>
+            <form>
+                <textarea id="text1" style="position: fixed;top: 75px;right: 28px;"></textarea>
+            </form>
+            <button id="sub" style="background-color: green;display: list-item;position: fixed;top: 23px;right: 28px;">Send</button>
+            <span id="mess" style="position: fixed;bottom:10px;right: 28px;"></span>
+        </div>
+       <script>
+           var d;
+           var time;
+            $('#text1').css('background-color','grey');
+            $('#sub').click(function(){
+                d = new Date();
+                time = d.getHours()+":"+d.getMinutes();
+                var value = $('div #textarea1').val();
+                $('#text1').val(value+"     "+time);
+                $('div #textarea1').val(' ');
+                $('#mess').html("Your response has been recorded.");
+            });
+           $('#boards').click(function(){
+               $('#break2').hide();
+               $('#list2').hide();
+               $('#break1').show();
+               $('#list1').show();
+               $('#break3').hide();
+               $('#list3').hide();
+               $('#break4').hide();
+               $('#list4').hide();
+               $('#break5').hide();
+               $('#list5').hide();
+               $('#break6').hide();
+               $('#list6').hide();
+           });
+           $('#boards').mouseover(function(){
+                $('#break1').hide();
+                $('#list1').hide();     
+           });
+           $('#societies').click(function(){
+               $('#break1').hide();
+               $('#list1').hide();
+               $('#break2').show();
+               $('#list2').show();
+               $('#break3').hide();
+               $('#list3').hide();
+               $('#break4').hide();
+               $('#list4').hide();
+               $('#break5').hide();
+               $('#list5').hide();
+               $('#break6').hide();
+               $('#list6').hide();
+           });
+           $('#societies').mouseover(function(){
+               $('#break2').hide();
+               $('#list2').hide();
+           });
+           $('#team').click(function(){
+               $('#break2').hide();
+               $('#list2').hide();
+               $('#break1').hide();
+               $('#list1').hide();
+               $('#break3').show();
+               $('#list3').show();
+               $('#break4').hide();
+               $('#list4').hide();
+               $('#break5').hide();
+               $('#list5').hide();
+               $('#break6').hide();
+               $('#list6').hide();
+           });
+           $('#team').mouseover(function(){
+               $('#break3').hide();
+               $('#list3').hide();
+           });
+           $('#gallery').click(function(){
+               $('#break2').hide();
+               $('#list2').hide();
+               $('#break1').hide();
+               $('#list1').hide();
+               $('#break4').show();
+               $('#list4').show();
+               $('#break3').hide();
+               $('#list3').hide();
+               $('#break5').hide();
+               $('#list5').hide();
+               $('#break6').hide();
+               $('#list6').hide();
+           });
+           $('#gallery').mouseover(function(){
+               $('#break4').hide();
+               $('#list4').hide();
+           });
+           $('#contacts').click(function(){
+               $('#break5').show();
+               $('#list5').show();
+               $('#break2').hide();
+               $('#list2').hide();
+               $('#break1').hide();
+               $('#list1').hide();
+               $('#break4').hide();
+               $('#list4').hide();
+               $('#break3').hide();
+               $('#list3').hide();
+               $('#break6').hide();
+               $('#list6').hide();
+           });
+           $('#contacts').mouseover(function(){
+               $('#break5').hide();
+               $('#list5').hide();
+           });
+           $('#fests').click(function(){
+               $('#break6').show();
+               $('#list6').show();
+               $('#break5').hide();
+               $('#list5').hide();
+               $('#break2').hide();
+               $('#list2').hide();
+               $('#break1').hide();
+               $('#list1').hide();
+               $('#break4').hide();
+               $('#list4').hide();
+               $('#break3').hide();
+               $('#list3').hide();
+           });
+           $('#fests').mouseover(function(){
+               $('#break6').hide();
+               $('#list6').hide();
+           });
+        </script>
+    </body>
+</html>

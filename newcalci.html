@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        body{
+            background-color: rgb(87, 59, 59);
+            font-family: 'Rajdhani', sans-serif;
+            background-blend-mode: lighten;
+            background-repeat: no-repeat;
+            background-size: 960px 500px;
+        }
+        #out:hover{
+            background-color: rgb(238, 238, 34);
+        }
+        .gr{
+            display: grid;
+            position: absolute;
+            top:120px;
+            grid-template-columns: auto auto auto auto;
+            grid-row-gap: 5px;
+        }
+        .item0{
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+        }
+        .item{
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+        }
+        .item2{
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+        }
+        #equa{
+            background-color: orange;
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+        #nor{
+            transition: padding-top 1s;
+        }
+        .calculator{
+            background:wheat;
+        }
+    </style>
+    <body>
+        <div id="mo"></div>
+        <div class="calculator" style="border:1px solid black;position:absolute;left:100px;top:50px;width: 213px;height:375px;border-radius:5%;opacity:0.6;">
+            <p style="position: absolute;left: 140px;top: 0px;color: blue;font-size: 19px;z-index: 1;font-weight: bold;">CASIO</p>
+            <p id="dupe" style="position:relative;text-align:right;left:0px;top: 43px;color: white;z-index: 1;font-size: 16px;"></p>
+            <p id="nor"type="text" style="padding-top:40px;position:absolute;caret-color:transparent;color:white;background-color:black;left:0px;top:45px;height:17px;text-align:right;width:212.99999px;border-radius:5%;cursor:none;"></p>
+            <div class="gr" style="width: 200px;top: 133px;left: 7px;">
+                <div class="item" id="AC" style="color: red;">AC</div>
+                <div class="item" id="back" style="padding-bottom:0px;">DEL</div>
+                <div class="item2" id="modu" >%</div>
+                <div class="item2" id="divide" >/</div>
+                <div class="item" id="7">7</div>
+                <div class="item" id="8">8</div>
+                <div class="item2" id="9">9</div>
+                <div class="item2" id="mul" >X</div>
+                <div class="item" id="4">4</div>
+                <div class="item" id="5">5</div>
+                <div class="item2" id="6">6</div>
+                <div class="item2" id="minus" >-</div>
+                <div class="item" id="1">1</div>
+                <div class="item" id="2">2</div>
+                <div class="item2" id="3">3</div>
+                <div class="item2" id="plus">+</div>
+                <div class="item0" id="0">0</div>
+                <div class="item0" id="dot">.</div>
+                <div class="item0" id="equa">=</div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var arr=[];
+        var status=false;
+        var oper=[];
+        var digitcount=0;
+        var dotcount=0;
+        $('#AC').click(function(){
+            $('#nor').text('');
+            $('#dupe').text('');
+            arr=[];
+            oper=[];
+            dotcount=0;
+            digitcount=0;
+            status=false;
+        });
+        $('#equa').click(function(){
+            var ans=$('#dupe').text();
+            $('#nor').text(ans);
+            $('#dupe').text('');
+        });
+        $('#back').click(function(){
+            if(digitcount>0){
+                digitcount--;
+            }
+            if($('#nor').text().charAt($('#nor').text().length-1)==='.'){
+                dotcount--;
+            }
+            $('#nor').text($('#nor').text().toString().substring(0,$('#nor').text().length-1));
+            var x=$('#nor').text();
+            if(x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%')){
+                $('#dupe').text(eval(x));
+            }
+            else{
+                if(status!=false){}
+                else{
+                    $('#dupe').text(x);
+                }
+            }
+        });
+        $('.item').mouseenter(function(){
+            $(this).css('border-bottom','1px solid black');  
+        });
+        $('.item2').mouseenter(function(){
+            $(this).css('border-bottom','1px solid black');
+        });
+        $('.item').mouseleave(function(){
+            $(this).css('border-style','none');
+        });
+        $('.item0').mouseenter(function(){
+            $(this).css('border-bottom','1px solid black');
+        });
+        $('.item0').mouseleave(function(){
+            $(this).css('border-style','none');
+        });
+        $('.item2').mouseleave(function(){
+            $(this).css('border-style','none');
+        });
+        $('#plus').click(function(){
+            digitcount=0;
+            status=true;
+            dotcount=0;
+            var x=$('#nor').text();
+            if(x.length>0&&digitcount<13){
+                if(x[x.length-1]!='+'&&x[x.length-1]!='-'&&x[x.length-1]!='*'&&x[x.length-1]!='/'&&x[x.length-1]!='%'){
+                    x=x+'+';
+                    $('#nor').text(x);
+                }
+                else{
+                }
+            }
+        });
+        $('#minus').click(function(){
+            digitcount=0;
+            status=true;
+            dotcount=0;
+            var x=$('#nor').text();
+            if(x.length>0){
+                if(x[x.length-1]!='+'&&x[x.length-1]!='-'&&x[x.length-1]!='*'&&x[x.length-1]!='/'&&x[x.length-1]!='%'){
+                    x=x+'-';
+                    $('#nor').text(x);
+                }
+                else{
+                }
+            }
+            else{
+                x=x+'-';
+                $('#nor').text(x);
+            }
+            
+        });
+        $('#modu').click(function(){
+            digitcount=0;
+            status=true;
+            dotcount=0;
+            var x=$('#nor').text();
+            if(x.length>0&&digitcount<13){
+                if(x[x.length-1]!='+'&&x[x.length-1]!='-'&&x[x.length-1]!='*'&&x[x.length-1]!='/'&&x[x.length-1]!='%'){
+                    x=x+'%';
+                    $('#nor').text(x);
+                }
+                else{
+                }
+            }
+            
+        });
+        $('#divide').click(function(){
+            digitcount=0;
+            status=true;
+            dotcount=0;
+            var x=$('#nor').text();
+            if(x.length>0&&digitcount<13){
+                if(x[x.length-1]!='+'&&x[x.length-1]!='-'&&x[x.length-1]!='*'&&x[x.length-1]!='/'&&x[x.length-1]!='%'){
+                    x=x+'/';
+                    $('#nor').text(x);
+                }
+                else{
+                }
+            }
+        });
+        $('#mul').click(function(){
+            digitcount=0;
+            status=true;
+            dotcount=0;
+            var x=$('#nor').text();
+            if(x.length>0&&digitcount<12){
+                if( x[x.length-1]!='+'&&x[x.length-1]!='-'&&x[x.length-1]!='*'&&x[x.length-1]!='/'&&x[x.length-1]!='%'){
+                    x=x+'*';
+                    $('#nor').text(x);
+                }
+                else{
+                }
+            }
+        });
+        $('#1').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'1';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if( (x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#2').click(function(){
+            
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'2';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if( (x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#3').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'3';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#4').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'4';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#5').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'5';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#6').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'6';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#7').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'7';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#8').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'8';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#9').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'9';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#0').click(function(){
+            var x=$('#nor').text();
+            if(digitcount<12){
+                digitcount++;
+                x=x+'0';
+            }
+            $('#nor').html(x);
+            $('#dupe').text(x);
+            if((x.includes('+')||x.includes('-')||x.includes('*')||x.includes('/')||x.includes('%'))){
+                if(Number.isInteger(eval(x))==true){
+                    $('#dupe').text(eval(x));
+                }
+                else{
+                    $('#dupe').text(parseFloat(eval(x)).toFixed(4));
+                }
+            }
+            else{
+                $('#dupe').text('');
+            }
+        });
+        $('#dot').click(function(){
+            var x=$('#nor').text();
+            if(dotcount==0 && x.length>=1&&x.length<12){
+                dotcount++;
+                $('#nor').text(x+".");
+            }
+        });
+    </script>
+</html>
